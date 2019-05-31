@@ -10,12 +10,12 @@ namespace ClassLibraryWaterUsePlan
         /// <summary>
         /// УИД с/х культуры
         /// </summary>
-        public int Id { get; set; }
+        public int CropId { get; set; }
 
         /// <summary>
         /// Наименование с/х культуры
         /// </summary>
-        public string Name { get; set; }
+        public string CropName { get; set; }
 
         /// <summary>
         /// Поливная норма
@@ -26,5 +26,16 @@ namespace ClassLibraryWaterUsePlan
         /// Оросительная норма
         /// </summary>
         public double IrrigationRate { get; set; }
+
+
+        /// <summary>
+        /// УИД группы с/х культур
+        /// </summary>
+        public int CropGroupId { get; set; }
+
+        /// <summary>
+        /// Группа с/х культур
+        /// </summary>
+        public CropGroup CropGroup { get; set; }
     }
 }
