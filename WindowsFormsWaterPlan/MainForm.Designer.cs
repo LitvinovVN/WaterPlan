@@ -37,6 +37,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button_Save = new System.Windows.Forms.Button();
             this.dataGridViewCrops = new System.Windows.Forms.DataGridView();
+            this.ToolStripMenuItemCropGroupsSqlite = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -50,7 +51,7 @@
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(3, 3);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(623, 186);
+            this.dataGridView.Size = new System.Drawing.Size(623, 185);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
@@ -68,7 +69,8 @@
             // 
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemCropGroups,
-            this.ToolStripMenuItemCrops});
+            this.ToolStripMenuItemCrops,
+            this.ToolStripMenuItemCropGroupsSqlite});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -76,14 +78,14 @@
             // ToolStripMenuItemCropGroups
             // 
             this.ToolStripMenuItemCropGroups.Name = "ToolStripMenuItemCropGroups";
-            this.ToolStripMenuItemCropGroups.Size = new System.Drawing.Size(181, 22);
+            this.ToolStripMenuItemCropGroups.Size = new System.Drawing.Size(216, 22);
             this.ToolStripMenuItemCropGroups.Text = "Группы с/х культур";
             this.ToolStripMenuItemCropGroups.Click += new System.EventHandler(this.ToolStripMenuItemCropGroups_Click);
             // 
             // ToolStripMenuItemCrops
             // 
             this.ToolStripMenuItemCrops.Name = "ToolStripMenuItemCrops";
-            this.ToolStripMenuItemCrops.Size = new System.Drawing.Size(181, 22);
+            this.ToolStripMenuItemCrops.Size = new System.Drawing.Size(216, 22);
             this.ToolStripMenuItemCrops.Text = "С/х культуры";
             this.ToolStripMenuItemCrops.Click += new System.EventHandler(this.ToolStripMenuItemCrops_Click);
             // 
@@ -110,7 +112,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(632, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(165, 186);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(165, 185);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // button_Save
@@ -128,10 +130,17 @@
             // 
             this.dataGridViewCrops.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCrops.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCrops.Location = new System.Drawing.Point(3, 195);
+            this.dataGridViewCrops.Location = new System.Drawing.Point(3, 194);
             this.dataGridViewCrops.Name = "dataGridViewCrops";
-            this.dataGridViewCrops.Size = new System.Drawing.Size(623, 228);
+            this.dataGridViewCrops.Size = new System.Drawing.Size(623, 229);
             this.dataGridViewCrops.TabIndex = 3;
+            // 
+            // ToolStripMenuItemCropGroupsSqlite
+            // 
+            this.ToolStripMenuItemCropGroupsSqlite.Name = "ToolStripMenuItemCropGroupsSqlite";
+            this.ToolStripMenuItemCropGroupsSqlite.Size = new System.Drawing.Size(216, 22);
+            this.ToolStripMenuItemCropGroupsSqlite.Text = "Группы с/х культур Sqlite ";
+            this.ToolStripMenuItemCropGroupsSqlite.Click += new System.EventHandler(this.ToolStripMenuItemCropGroupsSqlite_Click);
             // 
             // MainForm
             // 
@@ -166,6 +175,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button_Save;
         private System.Windows.Forms.DataGridView dataGridViewCrops;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCropGroupsSqlite;
     }
 }
 

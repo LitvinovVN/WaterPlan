@@ -22,6 +22,6 @@ namespace ClassLibraryWaterUsePlan
         /// <summary>
         /// Список с/х культур
         /// </summary>
-        public List<Crop> Crops { get; set; }
+        public List<Crop> Crops { get; set; } = new List<Crop>();
     }
 }

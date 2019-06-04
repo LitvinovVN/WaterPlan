@@ -15,6 +15,9 @@ namespace WindowsFormsWaterPlan
         ICropGroupRepository cropGroupRepository = new CropGroupMemoryRepository();
         //ICropRepository cropRepository = new CropMemoryRepository();
 
+        // sqlite
+        ICropGroupRepository cropGroupSqliteRepository = new CropGroupSqliteRepository();
+
         public MainForm()
         {
             InitializeComponent();
@@ -23,6 +26,8 @@ namespace WindowsFormsWaterPlan
         private void Form1_Load(object sender, EventArgs e)
         {
             InitRepositories();
+
+            var cg = cropGroupSqliteRepository.GetCropGroups();            
         }
 
         #region Обработчики нажатия кнопок меню
@@ -45,6 +50,16 @@ namespace WindowsFormsWaterPlan
         {
             SetupDataGridView(DataGridViewTableEnum.Crops);
         }
+
+        /// <summary>
+        /// Обработчик нажатия кнопки меню "Справочники - С/х культуры Sqlite"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemCropGroupsSqlite_Click(object sender, EventArgs e)
+        {
+            SetupDataGridView(DataGridViewTableEnum.CropGroupsSqlite);
+        }
         #endregion
 
         /// <summary>
@@ -62,6 +77,14 @@ namespace WindowsFormsWaterPlan
                     dataGridView.Columns[1].HeaderText = "Наименование группы с/х культур";
                     dataGridView.Columns[1].Width = 400;
                     break;
+                case DataGridViewTableEnum.CropGroupsSqlite:
+                    BindingList<CropGroup> bindingListCropGroupSqlite = new BindingList<CropGroup>(cropGroupSqliteRepository.GetCropGroups());
+                    dataGridView.DataSource = bindingListCropGroupSqlite;
+
+                    //dataGridView.Columns[0].HeaderText = "Id";
+                    dataGridView.Columns[1].HeaderText = "Наименование группы с/х культур";
+                    dataGridView.Columns[1].Width = 400;
+                    break;
                 case DataGridViewTableEnum.Crops:                    
                     BindingList<Crop> bindingListCrop = new BindingList<Crop>(new List<Crop>());
                     dataGridView.DataSource = bindingListCrop;
@@ -69,7 +92,7 @@ namespace WindowsFormsWaterPlan
                     //dataGridView.Columns[0].HeaderText = "Id";
                     dataGridView.Columns[1].HeaderText = "Наименование с/х культуры";
                     dataGridView.Columns[1].Width = 400;
-                    break;
+                    break;                
                 default:
                     break;
             }
@@ -186,10 +209,21 @@ namespace WindowsFormsWaterPlan
 
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            var selectedRow = ((CropGroup)((DataGridView)sender).CurrentRow.DataBoundItem).CropGroupName;
-            MessageBox.Show(selectedRow, "");
-            BindingList<Crop> bindingListCrop = new BindingList<Crop>(new List<Crop>());
-            dataGridViewCrops.DataSource = bindingListCrop;
+            try
+            {
+                var selectedRow = ((CropGroup)((DataGridView)sender).CurrentRow.DataBoundItem).CropGroupId;
+                
+                //BindingList<Crop> bindingListCrops = new BindingList<Crop>(cropGroupRepository.GetCropGroup(selectedRow).Crops);
+                BindingList<Crop> bindingListCrops = new BindingList<Crop>(cropGroupSqliteRepository.GetCropGroup(selectedRow).Crops);
+
+                dataGridViewCrops.DataSource = bindingListCrops;
+            }
+            catch(Exception exc)
+            {
+
+            }
         }
+
+        
     }
 }
